@@ -1,0 +1,36 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>CLIENT_ID</key>
+	<string>1039301859945-sjmnhq2305vnhui8is2vrmgi8ta71cf5.apps.googleusercontent.com</string>
+	<key>REVERSED_CLIENT_ID</key>
+	<string>com.googleusercontent.apps.1039301859945-sjmnhq2305vnhui8is2vrmgi8ta71cf5</string>
+	<key>API_KEY</key>
+	<string>AIzaSyDGAUKxPiX-DN_Kp2BJfmNneyJFKmBMaGg</string>
+	<key>GCM_SENDER_ID</key>
+	<string>1039301859945</string>
+	<key>PLIST_VERSION</key>
+	<string>1</string>
+	<key>BUNDLE_ID</key>
+	<string>com.example.sailabilityApp</string>
+	<key>PROJECT_ID</key>
+	<string>sailability-b8fc4</string>
+	<key>STORAGE_BUCKET</key>
+	<string>sailability-b8fc4.appspot.com</string>
+	<key>IS_ADS_ENABLED</key>
+	<false></false>
+	<key>IS_ANALYTICS_ENABLED</key>
+	<false></false>
+	<key>IS_APPINVITE_ENABLED</key>
+	<true></true>
+	<key>IS_GCM_ENABLED</key>
+	<true></true>
+	<key>IS_SIGNIN_ENABLED</key>
+	<true></true>
+	<key>GOOGLE_APP_ID</key>
+	<string>1:1039301859945:ios:264481e102447a3cbde0f8</string>
+	<key>DATABASE_URL</key>
+	<string>https://sailability-b8fc4.firebaseio.com</string>
+</dict>
+</plist>

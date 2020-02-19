@@ -1,6 +1,9 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sailability_app/Leden/leden.dart';
+import 'package:sailability_app/Profile/profile.dart';
 import 'package:sailability_app/main.dart';
+import 'package:sailability_app/nieuws/nieuws.dart';
 
 import 'MediaQ/sizeConfig.dart';
 
@@ -34,18 +37,9 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
           },
         )),
       ),
-      Center(
-        child: Text('ddadzda'),
-      ), //center
-      Center(
-        child: Text('dd'),
-      ),
-      Center(
-        child: Text('dzd'),
-      ),
-      Center(
-        child: Text('enne'),
-      ),
+      NieuwsPage(),
+      LedenPage(),
+      ProfilePage(),
     ];
 
     tabController = TabController(length: _tabList.length, vsync: this);
@@ -80,16 +74,16 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
         },
         items: [
           BottomNavigationBarItem(
-            icon: new Icon(Icons.list),
-            title: new Text('Feed'),
+            icon: new Icon(Icons.directions_boat),
+            title: new Text('Zeilen'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.headset),
-            title: new Text('Mood'),
+            icon: new Icon(Icons.fiber_new),
+            title: new Text('Nieuws'),
           ),
           BottomNavigationBarItem(
-            icon: new Icon(Icons.event_available),
-            title: new Text('Aanwezigheid'),
+            icon: new Icon(Icons.people),
+            title: new Text('Leden'),
           ),
           BottomNavigationBarItem(
               icon: Icon(Icons.person), title: Text('Profiel'))

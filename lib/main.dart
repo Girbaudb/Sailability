@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:sailability_app/Inlog/inlog.dart';
+import 'package:sailability_app/Inlog/whoRu.dart';
 import 'package:sailability_app/home.dart';
 import 'Inlog/register.dart';
 import 'MediaQ/sizeConfig.dart';
@@ -24,11 +25,12 @@ class MyApp extends StatelessWidget {
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({Key key, this.title, this.loggedIn, this.widgetLogin}) : super(key: key);
+  MyHomePage({Key key, this.title, this.loggedIn, this.widgetLogin})
+      : super(key: key);
 
   final String title;
   final loggedIn;
-  Widget widgetLogin;
+  Widget widgetLogin = Container();
 
   @override
   _MyHomePageState createState() => _MyHomePageState();
@@ -36,6 +38,8 @@ class MyHomePage extends StatefulWidget {
 
 class _MyHomePageState extends State<MyHomePage> {
   var login = false;
+  var navigate = false;
+
   @override
   initState() {
     FirebaseAuth.instance
@@ -67,14 +71,35 @@ class _MyHomePageState extends State<MyHomePage> {
   @override
   Widget build(BuildContext context) {
     SizeConfig().init(context);
-    var sizeWidth = SizeConfig.blockSizeHorizontal;
-    var sizeHeight = SizeConfig.blockSizeVertical;
 
-    
     if (login == false) {
-      return Container();
+      return Container(
+        width: 12,
+        height: 120,
+      );
     } else {
-      return widget.widgetLogin;
+      FirebaseAuth.instance.currentUser().then((currentUser) {
+        if (currentUser == null && navigate == false) {
+          print(navigate);
+          setState(() {
+            navigate = true;
+          });
+          Navigator.push(
+              context, MaterialPageRoute(builder: (context) => WhoRU()));
+        } else {
+          Firestore.instance
+              .collection("Users")
+              .document(currentUser.uid)
+              .get()
+              .then((DocumentSnapshot result) => Navigator.pushReplacement(
+                  context, MaterialPageRoute(builder: (context) => Home())))
+              .catchError((err) => print(err));
+        }
+      }).catchError((err) => print(err));
+      return Container(
+        color: Colors.white,
+        child: CircularProgressIndicator(),
+      );
     }
   }
 }

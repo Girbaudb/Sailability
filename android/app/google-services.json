@@ -1,0 +1,47 @@
+{
+  "project_info": {
+    "project_number": "1039301859945",
+    "firebase_url": "https://sailability-b8fc4.firebaseio.com",
+    "project_id": "sailability-b8fc4",
+    "storage_bucket": "sailability-b8fc4.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1039301859945:android:5b6e62d9d4a9064abde0f8",
+        "android_client_info": {
+          "package_name": "com.dildo.sailability_app"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1039301859945-abg995jbuj0alcmevumr7lb351mmdh19.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyAajZFtGhgzqj5vWGTuswF2luL6NQI47i0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1039301859945-abg995jbuj0alcmevumr7lb351mmdh19.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "1039301859945-sjmnhq2305vnhui8is2vrmgi8ta71cf5.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.sailabilityApp"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -2,6 +2,8 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sailability_app/MediaQ/sizeConfig.dart';
+import 'package:sailability_app/main.dart';
+import 'package:sailability_app/mood.dart';
 
 class ProfilePage extends StatefulWidget {
   @override
@@ -120,7 +122,7 @@ class _ProfilePageState extends State<ProfilePage> {
                       height: sizeHeight * 1,
                     ),
                     Text(
-                      leeftijd,
+                      leeftijd == null ? 'Geen leeftijd ingegeven' : leeftijd,
                       style: TextStyle(fontSize: sizeHeight * 2),
                     ),
                     SizedBox(
@@ -138,6 +140,22 @@ class _ProfilePageState extends State<ProfilePage> {
                       info,
                       style: TextStyle(fontSize: sizeHeight * 2),
                     ),
+                    FloatingActionButton(onPressed: () {
+                      FirebaseAuth.instance.signOut();
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MyHomePage()));
+                    }),
+                    FloatingActionButton(
+                      child: Icon(Icons.feedback),
+                      heroTag: 'rlf,oa,fzq',
+                      onPressed: () {
+                      Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => MoodPage()));
+                    })
                   ],
                 ),
               );

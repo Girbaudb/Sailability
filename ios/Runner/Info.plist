@@ -26,6 +26,12 @@
 	<string>LaunchScreen</string>
 	<key>UIMainStoryboardFile</key>
 	<string>Main</string>
+	<key>NSPhotoLibraryUsageDescription</key>
+	<string>Sailability wilt toegang tot je foto's.</string>
+	<key>NSCameraUsageDescription</key>
+	<string>Sailability wilt toegang tot je camera.</string>
+	<key>NSMicrophoneUsageDescription</key>
+	<string>Sailability wilt toegang tot je camera.</string>
 	<key>UISupportedInterfaceOrientations</key>
 	<array>
 		<string>UIInterfaceOrientationPortrait</string>

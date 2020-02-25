@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:sailability_app/MediaQ/sizeConfig.dart';
+import 'package:sailability_app/nieuws/nieuwsadd.dart';
 import 'package:sailability_app/nieuws/nieuwsinfo.dart';
 
 class NieuwsPage extends StatefulWidget {
@@ -34,6 +35,8 @@ class _NieuwsPageState extends State<NieuwsPage> {
           child: StreamBuilder(
             stream: Firestore.instance.collection('Nieuws').snapshots(),
             builder: (BuildContext context, AsyncSnapshot snapshot) {
+                if (snapshot.hasError) return Container();
+                if (!snapshot.hasData) return Container();
               return Column(
                 children: <Widget>[
                   SafeArea(
@@ -47,9 +50,18 @@ class _NieuwsPageState extends State<NieuwsPage> {
                               fontSize: sizeHeight * 5,
                               fontWeight: FontWeight.bold),
                         ),
-                        Icon(
-                          Icons.add,
-                          size: sizeHeight * 4,
+                        InkWell(
+                          onTap: () {
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        NieuwsAddPage()));
+                          },
+                          child: Icon(
+                            Icons.add,
+                            size: sizeHeight * 4,
+                          ),
                         )
                       ],
                     ),

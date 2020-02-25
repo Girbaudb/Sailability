@@ -1,5 +1,6 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
+import 'package:sailability_app/Aanwezigheden/aanwezigheden.dart';
 import 'package:sailability_app/Leden/leden.dart';
 import 'package:sailability_app/Profile/profile.dart';
 import 'package:sailability_app/main.dart';
@@ -24,7 +25,7 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
     super.initState();
 
     _tabList = [
-      Center(
+      /*Center(
         child: Center(
             child: MaterialButton(
           color: Colors.black,
@@ -36,7 +37,8 @@ class _HomeState extends State<Home> with SingleTickerProviderStateMixin {
             ));
           },
         )),
-      ),
+      ),*/
+      AanwezigheidsPage(),
       NieuwsPage(),
       LedenPage(),
       ProfilePage(),

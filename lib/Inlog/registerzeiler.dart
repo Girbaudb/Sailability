@@ -9,14 +9,14 @@ import 'package:sailability_app/MediaQ/sizeConfig.dart';
 
 import '../home.dart';
 
-class RegisterPage extends StatefulWidget {
-  RegisterPage({Key key}) : super(key: key);
+class RegisterPageZeiler extends StatefulWidget {
+  RegisterPageZeiler({Key key}) : super(key: key);
 
   @override
-  _RegisterPageState createState() => _RegisterPageState();
+  _RegisterPageZeilerState createState() => _RegisterPageZeilerState();
 }
 
-class _RegisterPageState extends State<RegisterPage> {
+class _RegisterPageZeilerState extends State<RegisterPageZeiler> {
   final GlobalKey<FormState> _registerFormKey = GlobalKey<FormState>();
   TextEditingController firstNameInputController;
   TextEditingController lastNameInputController;
@@ -279,7 +279,7 @@ class _RegisterPageState extends State<RegisterPage> {
                                       "Email": emailInputController.text,
                                       "Wachtwoord": pwdInputController.text,
                                       "Info": infoController.text,
-                                      "Zeiler": false,
+                                      "Zeiler": true,
                                       'Img': imgAvatar
                                     })
                                     .then((result) => {

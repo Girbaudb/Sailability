@@ -3,6 +3,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 
 import 'package:flutter/material.dart';
 import 'package:sailability_app/Inlog/register.dart';
+import 'package:sailability_app/Inlog/registerzeiler.dart';
 import 'package:sailability_app/MediaQ/sizeConfig.dart';
 
 class WhoRU extends StatefulWidget {
@@ -37,7 +38,12 @@ class _WhoRUState extends State<WhoRU> {
                   shape: RoundedRectangleBorder(
                       borderRadius: BorderRadius.circular(12)),
                     child: Text('Zeiler', style: TextStyle(color: Colors.white, fontSize: sizeHeight*3),),
-                  onPressed: () {},
+                  onPressed: () {
+                     Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) => RegisterPageZeiler()));
+                  },
                   color: Colors.blue,
                 )),
             Container(

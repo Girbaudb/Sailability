@@ -140,22 +140,56 @@ class _ProfilePageState extends State<ProfilePage> {
                       info,
                       style: TextStyle(fontSize: sizeHeight * 2),
                     ),
-                    FloatingActionButton(onPressed: () {
-                      FirebaseAuth.instance.signOut();
+                    SizedBox(height: sizeHeight*3),
+                    Container(
+                        margin: EdgeInsets.all(10),
+                        height: sizeHeight * 10,
+                        width: sizeWidth * 90,
+                        child: RaisedButton(
+                          child: Text(
+                            'Uitloggen',
+                            style: TextStyle(
+                                fontSize: sizeHeight * 3, color: Colors.white),
+                          ),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          splashColor: Colors.white,
+                          onPressed: () {
+                           
+                         FirebaseAuth.instance.signOut();
                       Navigator.push(
                           context,
                           MaterialPageRoute(
                               builder: (context) => MyHomePage()));
-                    }),
-                    FloatingActionButton(
-                      child: Icon(Icons.feedback),
-                      heroTag: 'rlf,oa,fzq',
-                      onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => MoodPage()));
-                    })
+                          },
+                        ),
+                      ),
+
+                    Container(
+                        margin: EdgeInsets.all(10),
+                        height: sizeHeight * 10,
+                        width: sizeWidth * 90,
+                        child: RaisedButton(
+                          child: Text(
+                            'Mood',
+                            style: TextStyle(
+                                fontSize: sizeHeight * 3, color: Colors.white),
+                          ),
+                          color: Colors.blue,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(12)),
+                          splashColor: Colors.white,
+                          onPressed: () {
+                           
+                            Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (BuildContext context) =>
+                                        MoodPage()));
+                          },
+                        ),
+                      ),
                   ],
                 ),
               );

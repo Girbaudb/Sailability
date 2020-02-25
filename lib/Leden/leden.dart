@@ -42,6 +42,8 @@ class _LedenPageState extends State<LedenPage> {
       child: StreamBuilder<QuerySnapshot>(
           stream: stream,
           builder: (context, snapshot) {
+            if (snapshot.hasError) return Container();
+            if (!snapshot.hasData) return Container();
             return Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(

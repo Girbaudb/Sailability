@@ -23,6 +23,12 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
   var img;
   var boot;
 
+  var actiefZeilen;
+  var praten;
+  var instructief;
+  var duur;
+  var opmerkingen;
+
   @override
   void initState() {
     super.initState();
@@ -164,10 +170,10 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
                                     itemBuilder:
                                         (BuildContext context, int index) {
                                       var timeDing = _card['Planning']
-                                                      .keys
-                                                      .elementAt(index).toString();
+                                          .keys
+                                          .elementAt(index)
+                                          .toString();
 
-                                         
                                       return new Column(children: <Widget>[
                                         Card(
                                           shape: RoundedRectangleBorder(
@@ -175,14 +181,20 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
                                                   BorderRadius.circular(12)),
                                           child: new ListTile(
                                               onTap: () async {
+
                                                 setState(() {
+                                                  duur = null;
                                                   document = _card;
                                                   time = _card['Planning']
                                                       .keys
                                                       .elementAt(index);
 
-                                                  person = _card['Planning'][timeDing][0].toString();
-                                                  boot = _card['Planning'][timeDing][1].toString();
+                                                  person = _card['Planning']
+                                                          [timeDing][0]
+                                                      .toString();
+                                                  boot = _card['Planning']
+                                                          [timeDing][1]
+                                                      .toString();
 
                                                   time = _card['Planning']
                                                       .keys
@@ -198,12 +210,26 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
                                                         person) {
                                                       setState(() {
                                                         img = v.data['Img'];
+                                                        actiefZeilen =
+                                                            v.data['Mood'][0];
+                                                        praten =
+                                                            v.data['Mood'][1];
+                                                        instructief =
+                                                            v.data['Mood'][2];
+                                                        duur =
+                                                            v.data['Mood'][3];
+                                                        opmerkingen =
+                                                            v.data['Mood'][4];
                                                       });
                                                     }
                                                   });
                                                 });
-                                                print(document);
-                                                slidingController.open();
+
+                                                if (duur == null) {
+                                                } else {
+                                                  print(document);
+                                                  slidingController.open();
+                                                }
                                               },
                                               title: Row(
                                                 mainAxisAlignment:
@@ -211,7 +237,9 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
                                                         .spaceBetween,
                                                 children: <Widget>[
                                                   new Text(timeDing),
-                                                  new Text(_card['Planning'][timeDing][0].toString())
+                                                  new Text(_card['Planning']
+                                                          [timeDing][0]
+                                                      .toString())
                                                 ],
                                               )),
                                         ),
@@ -231,7 +259,7 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
             ),
             SlidingUpPanel(
               renderPanelSheet: false,
-              maxHeight: sizeHeight * 50,
+              maxHeight: sizeHeight * 86,
               minHeight: 0,
               controller: slidingController,
               backdropEnabled: true,
@@ -248,41 +276,108 @@ class _AanwezigheidsPageState extends State<AanwezigheidsPage> {
                         ),
                       ]),
                   margin: const EdgeInsets.all(24.0),
-                  child: Container(
-                    margin: const EdgeInsets.all(20.0),
-                    child: Column(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: <Widget>[
-                          Text(
-                            'Aanwezig',
-                            style: TextStyle(
-                                fontSize: sizeHeight * 5,
-                                fontWeight: FontWeight.bold),
-                          ),
-                          SizedBox(height: sizeHeight * 2),
-                          CircleAvatar(
-                            backgroundImage: NetworkImage(img.toString()),
-                            radius: sizeHeight * 7,
-                          ),
-                          SizedBox(height: sizeHeight * 3),
-                          Text(
-                            person.toString(),
-                            style: TextStyle(
-                              fontSize: sizeHeight * 3,
+                  child: SingleChildScrollView(
+                    child: Container(
+                      margin: const EdgeInsets.all(20.0),
+                      child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.center,
+                          children: <Widget>[
+                            Text(
+                              'Aanwezig',
+                              style: TextStyle(
+                                  fontSize: sizeHeight * 5,
+                                  fontWeight: FontWeight.bold),
                             ),
-                          ),
-                          Text(
-                            boot.toString(),
-                            style: TextStyle(
-                              fontSize: sizeHeight * 2.5,
+                            SizedBox(height: sizeHeight * 2),
+                            CircleAvatar(
+                              backgroundImage: NetworkImage(img.toString()),
+                              radius: sizeHeight * 7,
                             ),
-                          ),
-                          SizedBox(height: sizeHeight * 1),
-                          Text(time.toString(),style: TextStyle(
-                              fontSize: sizeHeight * 2,
-                              color: Colors.black45
-                            ),),
-                        ]),
+                            SizedBox(height: sizeHeight * 3),
+                            Text(
+                              person.toString(),
+                              style: TextStyle(
+                                fontSize: sizeHeight * 3,
+                              ),
+                            ),
+                            Text(
+                              boot.toString(),
+                              style: TextStyle(
+                                fontSize: sizeHeight * 2.5,
+                              ),
+                            ),
+                            SizedBox(height: sizeHeight * 1),
+                            Text(
+                              time.toString(),
+                              style: TextStyle(
+                                  fontSize: sizeHeight * 2,
+                                  color: Colors.black45),
+                            ),
+                            SizedBox(height: sizeHeight * 5),
+                            Text(
+                              'Mood',
+                              style: TextStyle(
+                                  fontSize: sizeHeight * 4,
+                                  fontWeight: FontWeight.bold),
+                            ),
+                            SizedBox(height: sizeHeight * 2),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Actief Zeilen:',
+                                  style: TextStyle(fontSize: sizeHeight * 2),
+                                ),
+                                Text(actiefZeilen == true ? 'Ja' : 'Neen',
+                                    style: TextStyle(fontSize: sizeHeight * 2)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Praten:',
+                                  style: TextStyle(fontSize: sizeHeight * 2),
+                                ),
+                                Text(praten == true ? 'Ja' : 'Neen',
+                                    style: TextStyle(fontSize: sizeHeight * 2)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Instructief Zeilen:',
+                                  style: TextStyle(fontSize: sizeHeight * 2),
+                                ),
+                                Text(instructief == true ? 'Ja' : 'Neen',
+                                    style: TextStyle(fontSize: sizeHeight * 2)),
+                              ],
+                            ),
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: <Widget>[
+                                Text(
+                                  'Duur Zeilen:',
+                                  style: TextStyle(fontSize: sizeHeight * 2),
+                                ),
+                                Text('${duur.toString()} uur',
+                                    style: TextStyle(fontSize: sizeHeight * 2)),
+                              ],
+                            ),
+                            SizedBox(height: sizeHeight * 2),
+                            Text('Opmerkingen',
+                                style: TextStyle(
+                                    fontSize: sizeHeight * 4,
+                                    fontWeight: FontWeight.bold)),
+                            SizedBox(height: sizeHeight * 2),
+                            Align(
+                                alignment: Alignment.centerLeft,
+                                child: Text(opmerkingen.toString(),
+                                    maxLines: 10,
+                                    style: TextStyle(fontSize: sizeHeight * 2)))
+                          ]),
+                    ),
                   )),
             ),
           ],

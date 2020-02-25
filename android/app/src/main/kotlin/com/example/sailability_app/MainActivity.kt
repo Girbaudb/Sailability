@@ -1,4 +1,4 @@
-package com.example.sailability_app
+package com.dildo.sailability_app
 
 import androidx.annotation.NonNull;
 import io.flutter.embedding.android.FlutterActivity
